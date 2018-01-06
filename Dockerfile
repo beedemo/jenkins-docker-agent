@@ -1,6 +1,6 @@
-FROM openjdk:8-jre-alpine
+FROM jenkins/jnlp-slave:3.15-1-alpine
 
 # Install Docker client
-ARG DOCKER_VERSION=1.13.1
-RUN apk --update --no-cache add tar curl git bash jq \
-    && curl -fsSL https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION.tgz | tar --strip-components=1 -xz -C /usr/local/bin docker/docker
+ARG DOCKER_VERSION=17.12.0-ce
+RUN apk --update --no-cache add tar curl jq \
+    && curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION.tgz | tar --strip-components=1 -xz -C /usr/local/bin docker/docker
